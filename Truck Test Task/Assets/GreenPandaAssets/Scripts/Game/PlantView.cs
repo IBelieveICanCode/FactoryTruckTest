@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class PlantView : MonoBehaviour
 {
-    public List<GameObject> FactorySkins;
+    [SerializeField]
+    private Transform skinPlace;
+    public List<GameObject> PlantSkins;
 
     private float _animDuration = .5f;
     private Animator _anim;
     private int _currentSkinLevel = 1;
     
-    void Start()
+    public void SetupView()
     {
-        AddAllAvailableSkins();
+        print(PlantSkins.Count);
+        SetupAvailableSkins();
         _anim = GetComponent<Animator>();
         UpdateSkin(_currentSkinLevel);
     }
 
-    private void AddAllAvailableSkins()
+    private void SetupAvailableSkins()
     {
-        foreach (Transform child in this.gameObject.transform)
+        ClearAllSkins();
+        foreach (GameObject skin in PlantSkins)
         {
-            child.gameObject.SetActive(false);
-            FactorySkins.Add(child.gameObject);
+            GameObject mySkin = Instantiate(skin, skinPlace);
+            mySkin.transform.parent = skinPlace.transform;
+        }
+    }
+
+    private void ClearAllSkins()
+    {
+        foreach (Transform child in skinPlace.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
     void Update()
@@ -52,9 +64,9 @@ public class PlantView : MonoBehaviour
     
     private void UpdateSkin(int skinLevel)
     {
-        if (skinLevel <= FactorySkins.Count)
+        if (skinLevel <= PlantSkins.Count)
         {
-            FactorySkins[skinLevel - 1].SetActive(true);
+            PlantSkins[skinLevel - 1].SetActive(true);
         }
         else
             print("Max Level Reached");

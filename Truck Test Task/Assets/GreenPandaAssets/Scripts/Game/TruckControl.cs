@@ -4,50 +4,46 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
+[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody))]
-public class TruckControl : MonoBehaviour, IInitializable
+public class TruckControl : MonoBehaviour
 {
-    private Vector3 destination;
     [SerializeField]
-    TruckEngine engine;
-
+    private NavMeshAgent agent;
     [Inject]
-    PlantControl plantControl;
+    PlantControl plantControl; //The reference to the class which creates my truck. If I remove it, NullReferenceException for factory occurs  
     [Inject]
-    public readonly SignalBus signalBus;
-
-    Vector3 spawnPos;
-    Vector3 finishPos;
+    private readonly SignalBus signalBus;
+    
     [Inject]
     public void Construct(Vector3 spawnPoint, Vector3 finishPoint)
     {
-        spawnPos = spawnPoint;
-        finishPos = finishPoint;
+        agent.Warp(spawnPoint);
+        agent.destination = finishPoint;
     }
 
-    [Inject]
-    public void Initialize()
+    public void StopMovement()
     {
-        //engine.agent.Warp(spawnPos);
-        //engine.SetDestination(finishPos);
+        if (!agent.isStopped)
+            agent.isStopped = true;
+    }
+
+    public void ResumeMovement()
+    {
+        if (agent.isStopped)
+            agent.isStopped = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         ILoadGoodable bullDozerLoad = other.gameObject.GetComponent<ILoadGoodable>();
         if (bullDozerLoad != null && !bullDozerLoad.IsVisited)
         {
-            engine.StopMovement();
+            StopMovement();
             signalBus.Fire<StartLoadingGoodsInTruck>();
         }
     }
 
-    public void ContinueMovement()
-    {
-        engine.ResumeMovement();
-    }
 
+    public class TruckFactory : PlaceholderFactory<Vector3, Vector3, TruckControl>{}
 
-    public class TruckFactory : PlaceholderFactory<Vector3, Vector3, TruckControl>
-    {
-    }
 }

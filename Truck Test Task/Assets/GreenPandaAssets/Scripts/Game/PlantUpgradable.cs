@@ -2,11 +2,16 @@ namespace GreenPandaAssets.Scripts
 {
     public class PlantUpgradable : AUpgradable
     {
-        public PlantView FactoryView;
+        public PlantView PlantView;
 
-        private void Update()
+        public void SetupSettings(PlantConfig config)
         {
-        
+            _level = config.StartLevel;
+            _maxLevel = config.MaxLevelPlant;
+            _startPrice = config.StartPrice;
+            _priceStepFactor = config.PriceStepFactor;
+            PlantView.PlantSkins = config.Skins;
+            PlantView.SetupView();
         }
         
         public override void Upgrade()
@@ -29,7 +34,7 @@ namespace GreenPandaAssets.Scripts
                 skinLevel = 3;
             }
             
-            FactoryView.SetSkinLevel(skinLevel);
+            PlantView.SetSkinLevel(skinLevel);
         }
     }
 }

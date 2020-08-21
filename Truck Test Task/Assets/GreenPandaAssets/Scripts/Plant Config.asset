@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f640ab7b7d421b74e9f241d87ca4f8e6, type: 3}
+  m_Name: Plant Config
+  m_EditorClassIdentifier: 
+  _startLevel: 1
+  _maxLevelPlant: 15
+  _startPrice: 100
+  _priceStepFactor: 1.5
+  _skins:
+  - {fileID: 798418053308519083, guid: 1ad5b6bf0edcd29468839d99199bc37d, type: 3}
+  - {fileID: 1936497258042861321, guid: 08f732c970e01aa4dae95f37bfd549a4, type: 3}
+  - {fileID: 6279688705868013764, guid: 7c5b449cfc3428446a74e56eb92b9046, type: 3}

@@ -1,12 +1,15 @@
-﻿using System.Collections;
+﻿using GreenPandaAssets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class PlantControl : MonoBehaviour
 {
+    [Inject]
+    private PlantConfig plantConfig;
     [SerializeField]
-    GameObject truck;
+    private PlantUpgradable plantUpgradable;
     [SerializeField]
     Transform startPointForTruck, finishPointForTruck;
 
@@ -14,7 +17,9 @@ public class PlantControl : MonoBehaviour
     private readonly TruckControl.TruckFactory truckFactory;
     void Start()
     {
-        truckFactory.Create(startPointForTruck.position, finishPointForTruck.position);
+        plantUpgradable.SetupSettings(plantConfig);
+
+        //truckFactory.Create(startPointForTruck.position, finishPointForTruck.position);
     }
 
     // Update is called once per frame
