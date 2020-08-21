@@ -16,12 +16,12 @@ public class UpgradeUI : MonoBehaviour
     public TextMeshProUGUI CurrentLevelText;
     public TextMeshProUGUI NextLevelText;
 
-    private void Awake()
-    {
-        PriceText.text = Upgradable.GetPrice().ToString();
-        CurrentLevelText.text = Upgradable.Level.ToString();
-        NextLevelText.text = (Upgradable.Level + 1).ToString();
-    }
+    //private void Awake()
+    //{
+    //    PriceText.text = Upgradable.GetPrice().ToString();
+    //    CurrentLevelText.text = Upgradable.Level.ToString();
+    //    NextLevelText.text = (Upgradable.Level + 1).ToString();
+    //}
 
     private void Update()
     {
