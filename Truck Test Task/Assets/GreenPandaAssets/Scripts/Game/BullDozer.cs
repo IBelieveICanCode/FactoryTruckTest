@@ -6,41 +6,59 @@ using Zenject;
 public class BullDozer : MonoBehaviour, ILoadGoodable
 {
     [SerializeField]
-    private GameObject rock;
+    private GameObject _rock;
     [SerializeField]
-    private Animator animator;
-    private bool isLoading = false;
-    private bool isVisited = false;
-    public bool IsLoading => isLoading; 
-    public bool IsVisited => isVisited;
+    private Animator _animator;
+    private bool _isLoading = false;
+    private bool _isVisited = false;
+    public bool IsLoading => _isLoading; 
+    public bool IsVisited => _isVisited;
+    [Inject]
+    private readonly SignalBus _signalBus;
+    private IWaitForGoodable _truck;
 
     [Inject]
-    readonly SignalBus signalBus;
+    public void Construct(Transform spawnPoint)
+    {
+        transform.position = spawnPoint.position;
+        transform.parent = spawnPoint;
+    }
+    
+    public void Start()
+    {
+        _signalBus.Subscribe<TruckReachedDestination>(Refresh);
+    }
+    void Refresh()
+    {
+        _isVisited = false;
+    }
     public void LoadComplete()
     {
         PutRock();
-        isLoading = false;
-        signalBus.Fire<FinishLoadingGoodsInTruck>();
+        _isLoading = false;
+        _truck.ResumeMovement();
     }
 
-    public void StartLoadGoods()
+    public void StartLoadGoods(IWaitForGoodable truck)
     {
-        if (!isLoading)
-        {            
-            animator.SetTrigger("Loading");
-            isLoading = true;
-            isVisited = true;
+        if (!_isLoading)
+        {
+            this._truck = truck;
+            _animator.SetTrigger("Loading");
+            _isLoading = true;
+            _isVisited = true;
         }
     }
 
     void TakeRock()
     {
-        rock.SetActive(true);
+        _rock.SetActive(true);
     }
 
     void PutRock()
     {
-        rock.SetActive(false);
+        _rock.SetActive(false);
     }
 
+    public class BullDozerFactory : PlaceholderFactory<Transform, BullDozer> { }
 }

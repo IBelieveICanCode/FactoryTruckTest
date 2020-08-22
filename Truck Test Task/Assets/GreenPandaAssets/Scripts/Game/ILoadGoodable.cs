@@ -2,6 +2,6 @@
 {
     bool IsVisited { get; }
     bool IsLoading { get; }
-    void StartLoadGoods();
+    void StartLoadGoods(IWaitForGoodable truck);
     void LoadComplete();
 }

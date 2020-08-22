@@ -11,7 +11,10 @@ public class DefaultInstaller : MonoInstaller
     {
         GameSignalsInstaller.Install(Container);
         Container.BindFactory<Vector3, Vector3, TruckControl, TruckControl.TruckFactory>()
-           .FromComponentInNewPrefab(prefabConfig.TruckPefab)
-           .WithGameObjectName("Truck");
+            .FromComponentInNewPrefab(prefabConfig.TruckPefab)
+            .WithGameObjectName("Truck");
+        Container.BindFactory<Transform, BullDozer, BullDozer.BullDozerFactory>()
+            .FromComponentInNewPrefab(prefabConfig.BulldozerPrefab)
+            .WithGameObjectName("Bulldozer");
     }
 }

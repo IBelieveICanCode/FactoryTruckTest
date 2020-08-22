@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlantView : MonoBehaviour
 {
     [SerializeField]
-    private Transform skinPlace;
+    private Transform _skinPlace;
     public List<GameObject> PlantSkins;
 
     private float _animDuration = .5f;
@@ -14,7 +14,6 @@ public class PlantView : MonoBehaviour
     
     public void SetupView()
     {
-        print(PlantSkins.Count);
         SetupAvailableSkins();
         _anim = GetComponent<Animator>();
         UpdateSkin(_currentSkinLevel);
@@ -25,14 +24,14 @@ public class PlantView : MonoBehaviour
         ClearAllSkins();
         foreach (GameObject skin in PlantSkins)
         {
-            GameObject mySkin = Instantiate(skin, skinPlace);
-            mySkin.transform.parent = skinPlace.transform;
+            GameObject mySkin = Instantiate(skin, _skinPlace);
+            mySkin.transform.parent = _skinPlace.transform;
         }
     }
 
     private void ClearAllSkins()
     {
-        foreach (Transform child in skinPlace.transform)
+        foreach (Transform child in _skinPlace.transform)
         {
             Destroy(child.gameObject);
         }
