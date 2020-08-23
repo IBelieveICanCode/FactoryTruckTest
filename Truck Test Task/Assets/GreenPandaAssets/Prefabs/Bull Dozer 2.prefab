@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2345391493980423424}
   - component: {fileID: 2345391493980423431}
   - component: {fileID: 2345391493980423425}
+  - component: {fileID: 6794998515950613505}
   m_Layer: 0
   m_Name: Bull Dozer 2
   m_TagString: Untagged
@@ -109,8 +110,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.135563, y: 6.866458, z: 0.6586437}
-  m_Center: {x: 5.0677814, y: -1.8841987, z: 0.013745785}
+  m_Size: {x: 11.135563, y: 6.866458, z: 0.12}
+  m_Center: {x: 5.0677814, y: -1.8841987, z: -1.9}
 --- !u!95 &2345391493980423431
 Animator:
   serializedVersion: 3
@@ -139,7 +140,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5561634381639948634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4077dd1a6476d5488625c921979d426, type: 3}
+  m_Script: {fileID: 11500000, guid: 792f320949197034fb97424f66f1c613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullDozerView: {fileID: 6794998515950613505}
+--- !u!114 &6794998515950613505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561634381639948634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c002bf62977fd94898d78494270d1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rock: {fileID: 6152273762937755060}

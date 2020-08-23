@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f640ab7b7d421b74e9f241d87ca4f8e6, type: 3}
   m_Name: Plant Config
   m_EditorClassIdentifier: 
-  _startLevel: 1
-  _maxLevelPlant: 15
-  _startPrice: 100
+  Level: 1
+  _maxLevel: 15
+  _startPrice: 200
   _priceStepFactor: 1.5
   _skins:
   - {fileID: 798418053308519083, guid: 1ad5b6bf0edcd29468839d99199bc37d, type: 3}

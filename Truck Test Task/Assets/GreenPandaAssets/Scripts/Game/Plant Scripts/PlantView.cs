@@ -6,26 +6,30 @@ public class PlantView : MonoBehaviour
 {
     [SerializeField]
     private Transform _skinPlace;
-    public List<GameObject> PlantSkins;
-
-    private float _animDuration = .5f;
-    private Animator _anim;
+    private List<GameObject> _plantSkins = new List<GameObject>();
     private int _currentSkinLevel = 1;
     
-    public void SetupView()
+    private float _animDuration = .5f;
+    private Animator _anim;
+      
+    private Timer _timer;
+    
+    public void SetupView(List<GameObject> skins)
     {
-        SetupAvailableSkins();
+        SetupAvailableSkins(skins);
         _anim = GetComponent<Animator>();
         UpdateSkin(_currentSkinLevel);
     }
 
-    private void SetupAvailableSkins()
+    private void SetupAvailableSkins(List<GameObject> skins)
     {
         ClearAllSkins();
-        foreach (GameObject skin in PlantSkins)
+        foreach (GameObject skin in skins)
         {
             GameObject mySkin = Instantiate(skin, _skinPlace);
             mySkin.transform.parent = _skinPlace.transform;
+            mySkin.gameObject.SetActive(false);
+            _plantSkins.Add(mySkin);
         }
     }
 
@@ -36,36 +40,26 @@ public class PlantView : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var skin = _currentSkinLevel + 1;
-            SetSkinLevel(skin);
-        }
-    }
 
     public void SetSkinLevel(int skinLevel)
     {
         _anim.SetBool("isUpgrading", true);
-
         _currentSkinLevel = skinLevel;
-
-        StartCoroutine(WaitForSkinUpdate());
+        _timer = new Timer(_animDuration / 2, AnimSkinUpdate);
+        _timer.Restart();
     }
 
-    private IEnumerator WaitForSkinUpdate()
+    private void AnimSkinUpdate()
     {
-        yield return new WaitForSeconds(_animDuration / 2);
         _anim.SetBool("isUpgrading", false);
         UpdateSkin(_currentSkinLevel);
     }
     
     private void UpdateSkin(int skinLevel)
     {
-        if (skinLevel <= PlantSkins.Count)
+        if (skinLevel <= _plantSkins.Count)
         {
-            PlantSkins[skinLevel - 1].SetActive(true);
+            _plantSkins[skinLevel - 1].SetActive(true);
         }
         else
             print("Max Level Reached");

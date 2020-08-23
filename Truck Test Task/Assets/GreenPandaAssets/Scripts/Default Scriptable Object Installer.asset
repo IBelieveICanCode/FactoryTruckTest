@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Default Scriptable Object Installer
   m_EditorClassIdentifier: Assembly-CSharp::ScripObjectInstaller
-  plantConfig: {fileID: 11400000, guid: 13b02165773c3d0408ebf406f9462ffe, type: 2}
-  prefabConfig: {fileID: 11400000, guid: 6b0f9a3482c22dd41aa8094da558f0ac, type: 2}
+  _truckConfig: {fileID: 11400000, guid: 4b6361e3d33a42b4283236fd676c8c11, type: 2}
+  _bullDozerConfig: {fileID: 11400000, guid: 65cf20f00c296f74ab5d9a91d6392e4a, type: 2}
+  _plantConfig: {fileID: 11400000, guid: 13b02165773c3d0408ebf406f9462ffe, type: 2}
+  _prefabConfig: {fileID: 11400000, guid: 6b0f9a3482c22dd41aa8094da558f0ac, type: 2}

@@ -1,40 +1,25 @@
+using System;
+using UnityEngine;
+
 namespace GreenPandaAssets.Scripts
 {
     public class PlantUpgradable : AUpgradable
     {
-        public PlantView PlantView;
+        [SerializeField]
+        private PlantView _plantView;
 
         public void SetupSettings(PlantConfig config)
         {
-            _level = config.StartLevel;
-            _maxLevel = config.MaxLevelPlant;
-            _startPrice = config.StartPrice;
-            _priceStepFactor = config.PriceStepFactor;
-            PlantView.PlantSkins = config.Skins;
-            PlantView.SetupView();
+            this.Config = config;
+            _plantView.SetupView(Config.Skins);
         }
         
         public override void Upgrade()
         {
             base.Upgrade();
-
-            //TODO: norm upgrade every 5 levels
-            var skinLevel = -1;
-            
-            if (_level <= 5)
-            {
-                skinLevel = 1;
-            }
-            else if (_level <= 10)
-            {
-                skinLevel = 2;
-            }
-            else
-            {
-                skinLevel = 3;
-            }
-            
-            PlantView.SetSkinLevel(skinLevel);
+            int skinLevel = Level / 5;
+            print(skinLevel);
+            _plantView.SetSkinLevel(skinLevel + 1);
         }
     }
 }

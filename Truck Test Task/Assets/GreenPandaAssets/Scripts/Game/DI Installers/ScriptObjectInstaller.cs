@@ -7,13 +7,19 @@ using Zenject;
 public class ScripObjectInstaller : ScriptableObjectInstaller
 {
     [SerializeField]
-    private PlantConfig plantConfig;
+    private TruckConfig _truckConfig;
     [SerializeField]
-    private PrefabConfig prefabConfig;
+    private BullDozerConfig _bullDozerConfig;
+    [SerializeField]
+    private PlantConfig _plantConfig;
+    [SerializeField]
+    private PrefabConfig _prefabConfig;
 
     public override void InstallBindings()
     {
-        Container.BindInstance(prefabConfig);
-        Container.BindInstance(plantConfig);
+        Container.BindInstance(_prefabConfig);
+        Container.BindInstance(_plantConfig);
+        Container.BindInstance(_bullDozerConfig);
+        Container.BindInstance(_truckConfig);
     }
 }

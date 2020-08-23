@@ -23,9 +23,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176519902406079081}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.39000002}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.39000008}
   m_Children:
   - {fileID: 2991477212466955605}
   - {fileID: 2393843178027996668}
@@ -46,9 +46,8 @@ GameObject:
   - component: {fileID: 2393843176156316871}
   - component: {fileID: 2393843176156316864}
   - component: {fileID: 2393843176156316865}
+  - component: {fileID: -3846038520198368967}
   - component: {fileID: 2393843176156316868}
-  - component: {fileID: 2393843176156316867}
-  - component: {fileID: 7265901019670059996}
   m_Layer: 0
   m_Name: DumpingTruckPivot
   m_TagString: Untagged
@@ -82,9 +81,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.5
   m_Speed: 6
-  m_Acceleration: 10
+  m_Acceleration: 150
   avoidancePriority: 50
-  m_AngularSpeed: 180
+  m_AngularSpeed: 10
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -105,7 +104,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -2}
 --- !u!54 &2393843176156316865
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,6 +121,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3846038520198368967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393843176156316869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff9dd99907824d44b111fb347833c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 2393843176156316871}
 --- !u!114 &2393843176156316868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,38 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3aabffc0481074ba617c993803b833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 2393843176156316871}
---- !u!114 &2393843176156316867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393843176156316869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd31e4b42ac31e4d8e0893fa396aa42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2393843176156316871}
---- !u!114 &7265901019670059996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393843176156316869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components:
-  - {fileID: 2393843176156316868}
-  _identifier: 
-  _useSceneContext: 0
-  _context: {fileID: 0}
-  _bindType: 0
+  _truckEngine: {fileID: -3846038520198368967}
 --- !u!1 &2393843178027996669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,12 +1085,12 @@ PrefabInstance:
     - target: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0703
+      value: -0.07029998
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0558
+      value: 0.05579999
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133,
         type: 3}

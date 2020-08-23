@@ -4,14 +4,16 @@ namespace GreenPandaAssets.Scripts
 {
     public abstract class AUpgradable : MonoBehaviour
     {
-        protected int _level;
-
+        [HideInInspector]
+        public BaseConfig Config;
+        
+        private int _level;
         public int Level => _level;
 
-        protected int _maxLevel;
-        protected float _startPrice;
-        protected float _priceStepFactor;       
-        
+        private void Start()
+        {
+            _level = Config.Level;
+        }
         public virtual void Upgrade()
         {
             _level++;
@@ -19,12 +21,12 @@ namespace GreenPandaAssets.Scripts
 
         public bool IsMax()
         {
-            return _level >= _maxLevel;
+            return _level >= Config.MaxLevel;
         }
 
         public float GetPrice()
         {
-            return _startPrice * Mathf.Pow(_priceStepFactor, _level - 1);
+            return Config.StartPrice * Mathf.Pow(Config.PriceStepFactor, _level - 1);
         }
     }
 }

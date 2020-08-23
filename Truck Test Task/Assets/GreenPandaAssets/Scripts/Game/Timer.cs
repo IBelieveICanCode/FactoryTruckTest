@@ -34,7 +34,7 @@ public class Timer : IDisposable
         if (timer < finishTime)
             return;
         timer = 0.0f;
-        //isRunning = false;
+        isRunning = false;
         actionComplete();
     }
     public void Dispose()

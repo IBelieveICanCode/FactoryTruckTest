@@ -13,6 +13,6 @@ public class GameSignalsInstaller : Installer<GameSignalsInstaller>
         //Container.DeclareSignal<FinishLoadingGoodsInTruck>();
 
         //Container.BindSignal<StartLoadingGoodsInTruck>().ToMethod<BullDozer>(x => x.StartLoadGoods).FromResolveAll();
-        Container.BindSignal<TruckReachedDestination>().ToMethod<PlantControl>(x => x.UnloadTruck).FromResolveAll();
+        Container.BindSignal<TruckReachedDestination>().ToMethod<TruckManager>(x => x.UnloadTruck).FromResolveAll();
     }
 }

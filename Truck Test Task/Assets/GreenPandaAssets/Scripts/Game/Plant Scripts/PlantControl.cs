@@ -6,38 +6,32 @@ using UnityEngine;
 using Zenject;
 
 public class PlantControl : MonoBehaviour
-{
+{   
     [Inject]
     private PlantConfig _plantConfig;
     [SerializeField]
     private PlantUpgradable _plantUpgradable;
     [SerializeField]
-    Transform _startPointForTruck, _finishPointForTruck;
+    private Transform _startPointForTruck, _finishPointForTruck;
+    public Transform StartPointForTruck => _startPointForTruck;
+    public Transform FinishPointForTruck => _finishPointForTruck;
     [SerializeField]
     Transform _bullDozerPos;
+    
     [Inject]
-    private readonly TruckControl.TruckFactory truckFactory;
-    [Inject]
-    private BullDozer.BullDozerFactory _bullDozerFactory;
+    private BullDozerControl.BullDozerFactory _bullDozerFactory;
 
-    private TruckControl createdTruck;
     void Start()
     {
         _plantUpgradable.SetupSettings(_plantConfig);
-        CreateTruck();
         CreateBullDozer();
     }
 
-    public void UnloadTruck()
+    private void Update()
     {
-        Destroy(createdTruck.gameObject);
-        CreateTruck();
-    }
-
-    void CreateTruck()
-    {
-        createdTruck = truckFactory.Create(_startPointForTruck.position, _finishPointForTruck.position);
-    }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    _plantUpgradable.Upgrade();
+    }    
 
     void CreateBullDozer()
     {

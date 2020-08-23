@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class BullDozer : MonoBehaviour, ILoadGoodable
+public class BullDozerControl : MonoBehaviour, ILoadGoodable
 {
+    [Inject]
+    private BullDozerConfig _config;
     [SerializeField]
-    private GameObject _rock;
-    [SerializeField]
-    private Animator _animator;
-    private bool _isLoading = false;
+    private BullDozerView bullDozerView;
     private bool _isVisited = false;
-    public bool IsLoading => _isLoading; 
     public bool IsVisited => _isVisited;
     [Inject]
     private readonly SignalBus _signalBus;
@@ -34,31 +32,17 @@ public class BullDozer : MonoBehaviour, ILoadGoodable
     }
     public void LoadComplete()
     {
-        PutRock();
-        _isLoading = false;
+        bullDozerView.FinishLoadingAnim();       
         _truck.ResumeMovement();
     }
 
     public void StartLoadGoods(IWaitForGoodable truck)
-    {
-        if (!_isLoading)
-        {
-            this._truck = truck;
-            _animator.SetTrigger("Loading");
-            _isLoading = true;
-            _isVisited = true;
-        }
-    }
+    {       
+        this._truck = truck;        
+        _isVisited = true;
+        bullDozerView.LoadGoodsAnim();
+        
+    }   
 
-    void TakeRock()
-    {
-        _rock.SetActive(true);
-    }
-
-    void PutRock()
-    {
-        _rock.SetActive(false);
-    }
-
-    public class BullDozerFactory : PlaceholderFactory<Transform, BullDozer> { }
+    public class BullDozerFactory : PlaceholderFactory<Transform, BullDozerControl> { }
 }

@@ -10,11 +10,12 @@ public class DefaultInstaller : MonoInstaller
     public override void InstallBindings()
     {
         GameSignalsInstaller.Install(Container);
-        Container.BindFactory<Vector3, Vector3, TruckControl, TruckControl.TruckFactory>()
+        Container.BindFactory<TruckConfig, TruckControl, TruckControl.TruckFactory>()
             .FromComponentInNewPrefab(prefabConfig.TruckPefab)
             .WithGameObjectName("Truck");
-        Container.BindFactory<Transform, BullDozer, BullDozer.BullDozerFactory>()
+        Container.BindFactory<Transform, BullDozerControl, BullDozerControl.BullDozerFactory>()
             .FromComponentInNewPrefab(prefabConfig.BulldozerPrefab)
             .WithGameObjectName("Bulldozer");
+        Container.Bind<TruckControl>().AsCached();
     }
 }

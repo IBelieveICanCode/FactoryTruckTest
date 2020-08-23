@@ -16895,7 +16895,7 @@ PrefabInstance:
     - target: {fileID: 4730557759645073999, guid: 1f801826f2c6643668b5ae5c0c52c522,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4730557759645073999, guid: 1f801826f2c6643668b5ae5c0c52c522,
         type: 3}
@@ -16978,6 +16978,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8644969224792736947, guid: 24aa7cc72fd331d4993b7359d57b2c9f,
         type: 3}
+    - target: {fileID: 8576967640748648299, guid: 1f801826f2c6643668b5ae5c0c52c522,
+        type: 3}
+      propertyPath: Upgradable
+      value: 
+      objectReference: {fileID: 828180028}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f801826f2c6643668b5ae5c0c52c522, type: 3}
 --- !u!1001 &444918439
@@ -31916,6 +31921,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f8bc9aa52fab14cb7dd521c906392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &828180023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828180025}
+  - component: {fileID: 828180028}
+  - component: {fileID: 828180024}
+  - component: {fileID: 828180027}
+  - component: {fileID: 828180026}
+  m_Layer: 0
+  m_Name: TruckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &828180024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828180023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61f8314ce625484d852c75106289a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _truckUpgradable: {fileID: 828180028}
+--- !u!4 &828180025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828180023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 960, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828180026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828180023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 828180024}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
+--- !u!114 &828180027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828180023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c04434d6ea1e6442898783a7a343ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &828180028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828180023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7e6f9c73e4361438c3db9609841653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Config: {fileID: 0}
+  _truckView: {fileID: 828180027}
 --- !u!1 &828453401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8,
@@ -41352,7 +41448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skinPlace: {fileID: 317750355}
-  PlantSkins: []
 --- !u!114 &1073464818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41365,7 +41460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d8652af93a45039a7b786335f50d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlantView: {fileID: 1073464817}
+  Config: {fileID: 11400000, guid: 13b02165773c3d0408ebf406f9462ffe, type: 2}
+  _plantView: {fileID: 1073464817}
 --- !u!114 &1073464819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44275,8 +44371,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1223361840}
   - {fileID: 703697463}
+  - {fileID: 1223361840}
   - {fileID: 124385971}
   - {fileID: 1538717190}
   m_Father: {fileID: 0}
@@ -83988,7 +84084,7 @@ PrefabInstance:
     - target: {fileID: 4730557759645073999, guid: 1f801826f2c6643668b5ae5c0c52c522,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4730557759645073999, guid: 1f801826f2c6643668b5ae5c0c52c522,
         type: 3}
