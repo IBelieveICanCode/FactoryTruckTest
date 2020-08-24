@@ -15,5 +15,5 @@ MonoBehaviour:
   plantPrefab: {fileID: 0}
   truckPefab: {fileID: 2393843176156316869, guid: e544534babb612948ba42a13fb441b88,
     type: 3}
-  bulldozerPrefab: {fileID: 5561634381639948634, guid: 6fe35fb9c450c2345865604736bb46af,
+  bulldozerPrefab: {fileID: 2544975238932800968, guid: 0312c891243c8cf469617577d57ac2f6,
     type: 3}

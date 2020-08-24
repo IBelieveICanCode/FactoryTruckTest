@@ -61,8 +61,6 @@ public class PlantView : MonoBehaviour
         {
             _plantSkins[skinLevel - 1].SetActive(true);
         }
-        else
-            print("Max Level Reached");
     }
 }
 

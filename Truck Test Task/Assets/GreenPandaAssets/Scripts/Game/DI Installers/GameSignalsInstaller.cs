@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GreenPandaAssets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class GameSignalsInstaller : Installer<GameSignalsInstaller>
         SignalBusInstaller.Install(Container);
 
         Container.DeclareSignal<TruckReachedDestination>();
-        //Container.DeclareSignal<FinishLoadingGoodsInTruck>();
 
         //Container.BindSignal<StartLoadingGoodsInTruck>().ToMethod<BullDozer>(x => x.StartLoadGoods).FromResolveAll();
         Container.BindSignal<TruckReachedDestination>().ToMethod<TruckManager>(x => x.UnloadTruck).FromResolveAll();

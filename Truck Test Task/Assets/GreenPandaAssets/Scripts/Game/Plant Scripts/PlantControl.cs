@@ -14,27 +14,12 @@ public class PlantControl : MonoBehaviour
     [SerializeField]
     private Transform _startPointForTruck, _finishPointForTruck;
     public Transform StartPointForTruck => _startPointForTruck;
-    public Transform FinishPointForTruck => _finishPointForTruck;
-    [SerializeField]
-    Transform _bullDozerPos;
+    public Transform FinishPointForTruck => _finishPointForTruck; 
     
-    [Inject]
-    private BullDozerControl.BullDozerFactory _bullDozerFactory;
 
     void Start()
     {
         _plantUpgradable.SetupSettings(_plantConfig);
-        CreateBullDozer();
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //    _plantUpgradable.Upgrade();
-    }    
-
-    void CreateBullDozer()
-    {
-        _bullDozerFactory.Create(_bullDozerPos);
-    }
 }

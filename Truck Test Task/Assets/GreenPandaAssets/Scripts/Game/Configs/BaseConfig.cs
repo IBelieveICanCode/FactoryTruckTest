@@ -20,6 +20,11 @@ public class BaseConfig : ScriptableObject
     public float PriceStepFactor => _priceStepFactor;
 
     [SerializeField]
+    private float _startSpeed = 15;
+    public float StartSpeed => _startSpeed;
+    public float Speed;
+
+    [SerializeField]
     private List<GameObject> _skins;
     public List<GameObject> Skins => _skins;
 }

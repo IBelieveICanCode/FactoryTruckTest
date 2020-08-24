@@ -18,7 +18,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Start()
     {
-        //PriceText.text = Upgradable.Config.StartPrice.ToString();
+        PriceText.text = Upgradable.Config.StartPrice.ToString();
     }
 
     public void Upgrade()

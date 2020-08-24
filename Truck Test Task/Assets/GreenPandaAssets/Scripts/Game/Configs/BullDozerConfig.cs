@@ -10,6 +10,4 @@ public class BullDozerConfig : BaseConfig
     private float _animationSpeed;
     public float AnimationSpeed => _animationSpeed;
 
-
-
 }

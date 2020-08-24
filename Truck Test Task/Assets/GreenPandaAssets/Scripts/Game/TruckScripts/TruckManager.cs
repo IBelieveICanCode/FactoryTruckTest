@@ -7,13 +7,13 @@ public class TruckManager : MonoBehaviour
 {
     [SerializeField]
     private TruckUpgradable _truckUpgradable;
+    
     [Inject]
-    private TruckConfig _truckConfig;
+    private readonly TruckConfig _truckConfig;
     [Inject]
-    private readonly TruckControl.TruckFactory _truckFactory;
+    private readonly Truck.TruckFactory _truckFactory;
 
-    [Inject]
-    private TruckControl _createdTruck;
+    private Truck _createdTruck;
 
     private void Start()
     {
@@ -22,9 +22,8 @@ public class TruckManager : MonoBehaviour
     void CreateTruck()
     {
         _createdTruck = _truckFactory.Create(_truckConfig);
-        _truckUpgradable.SetupSettings(_truckConfig,_createdTruck);
+        _truckUpgradable.SetupSettings(_truckConfig, _createdTruck);
     }
-
     public void UnloadTruck()
     {
         Destroy(_createdTruck.gameObject);

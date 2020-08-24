@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Truck Config", menuName = "Create Truck Config")]
 public class TruckConfig : BaseConfig
 {
-    [SerializeField]
-    private float _startSpeed = 5f;
-    public float StartSpeed => _startSpeed;
+    public void Reset()
+    {
+        Speed = StartSpeed;
+    }
 }

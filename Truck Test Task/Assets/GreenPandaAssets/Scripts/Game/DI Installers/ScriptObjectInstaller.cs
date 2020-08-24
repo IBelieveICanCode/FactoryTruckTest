@@ -7,6 +7,8 @@ using Zenject;
 public class ScripObjectInstaller : ScriptableObjectInstaller
 {
     [SerializeField]
+    private CoinConfig _coinConfig;
+    [SerializeField]
     private TruckConfig _truckConfig;
     [SerializeField]
     private BullDozerConfig _bullDozerConfig;
@@ -21,5 +23,6 @@ public class ScripObjectInstaller : ScriptableObjectInstaller
         Container.BindInstance(_plantConfig);
         Container.BindInstance(_bullDozerConfig);
         Container.BindInstance(_truckConfig);
+        Container.BindInstance(_coinConfig);
     }
 }

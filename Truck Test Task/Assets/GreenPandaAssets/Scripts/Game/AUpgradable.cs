@@ -13,6 +13,7 @@ namespace GreenPandaAssets.Scripts
         private void Start()
         {
             _level = Config.Level;
+            Config.Speed = Config.StartSpeed;
         }
         public virtual void Upgrade()
         {

@@ -7,8 +7,7 @@ public class TruckUpgradable : AUpgradable
 {
     [SerializeField]
     private TruckView _truckView;
-
-    public void SetupSettings(TruckConfig config, TruckControl truck)
+    public void SetupSettings(TruckConfig config, Truck truck)
     {
         this.Config = config;
         var skin = ChooseSkin(config.Skins);
@@ -17,15 +16,16 @@ public class TruckUpgradable : AUpgradable
 
     public override void Upgrade()
     {
-        base.Upgrade();     
+        base.Upgrade();
+        Config.Speed += 5;
     }
 
     private GameObject ChooseSkin(List<GameObject> skins)
     {
-        int skinLevel = Level / 5;
+        int skinLevel = 1 + (Level / 5);
         if (skinLevel <= skins.Count)
-            return skins[Level - 1];
+            return skins[skinLevel - 1];
         else
-            return null;
+            return skins[skins.Count - 1];
     }
 }
