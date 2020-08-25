@@ -50,16 +50,11 @@ namespace GreenPandaAssets.BullDozerScripts
             this._truck = truck;
             _isVisited = true;
             LoadGoodsAnim();
-
         }
 
         public void LoadGoodsAnim()
         {
-            if (!_isLoading)
-            {
-                _animator.SetTrigger("Loading");
-                _isLoading = true;
-            }
+            _animator.SetBool("loading", true);
         }
 
         public void TakeRock() //activated inside Animation Events
@@ -70,7 +65,7 @@ namespace GreenPandaAssets.BullDozerScripts
         public void FinishLoadingAnim()
         {
             _rock.SetActive(false);
-            _isLoading = false;
+            _animator.SetBool("loading", false);
         }
         #endregion
     }

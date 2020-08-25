@@ -3,13 +3,12 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace GreenPandaAssets.Scripts
+namespace GreenPandaAssets.UIScripts
 {
-    public class TopUI : MonoBehaviour
+    public class TopUI : Singleton<TopUI>
     {
         [Inject]
         private CoinConfig _coinConfig;
-        public static TopUI Instance;
         
         private float _coins;
 
@@ -19,7 +18,6 @@ namespace GreenPandaAssets.Scripts
         }
         private void Start()
         {
-            Instance = this;
             CoinsText.text = "x" + _coins;
         }
         public void AddCoins(int amount)

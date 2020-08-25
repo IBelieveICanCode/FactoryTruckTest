@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using Zenject;
+using GreenPandaAssets.UIScripts;
 
-namespace GreenPandaAssets.Scripts
+namespace GreenPandaAssets.PlantScripts
 {
     public class PlantUpgradable : AUpgradable
     {

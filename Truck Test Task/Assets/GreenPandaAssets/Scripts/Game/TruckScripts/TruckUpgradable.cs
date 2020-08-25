@@ -1,4 +1,4 @@
-﻿using GreenPandaAssets.Scripts;
+﻿using GreenPandaAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

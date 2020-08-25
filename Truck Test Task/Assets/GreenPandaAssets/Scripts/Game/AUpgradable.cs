@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GreenPandaAssets.Scripts
+namespace GreenPandaAssets
 {
     public abstract class AUpgradable : MonoBehaviour
     {
